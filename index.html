@@ -3,39 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Simple eCommerce Site</title>
+    <title>SolutionHub Shop</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #fff;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #000;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            color: #fff;
+            display: inline-block;
+            margin: 0;
+        }
+        .header h1 span {
+            color: #ffae00;
+        }
+        .header .slogan {
+            font-size: 1em;
+            font-style: italic;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #000;
+        }
+        .navbar a {
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;
+            flex: 1; /* Makes all tabs equal width */
+            text-align: center;
+            font-weight: bold;
+            border-left: 1px solid #fff;
+        }
+        .navbar a:first-child {
+            border-left: none;
+        }
+        .navbar a:hover {
+            background-color: #444;
+        }
+
+        /* Advertising Section */
+        .advertising {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        .ad-images {
+            position: relative;
+            height: 100%;
+        }
+        .ad-images img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .ad-images img.active {
+            opacity: 1;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product-item {
+            background-color: #fff;
+            color: #000;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1 1 21%; /* 4 items per row by default */
+            max-width: 250px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-item h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .product-item p {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Modal for Product Details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .close-modal {
+            background-color: #ffae00;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            color: #000;
+            margin-top: 10px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .product-item {
+                flex: 1 1 45%; /* 2 items per row */
+            }
+        }
+        @media (max-width: 480px) {
+            .product-item {
+                flex: 1 1 100%; /* 1 item per row */
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        /* Filter Section */
+        .filters {
+            padding: 20px;
+            background-color: #333;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .filters select, .filters input[type="search"] {
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            max-width: 100%;
+        }
+
+        .place-order-btn {
+            background-color: #25D366;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .order-button, .go-button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .order-button:hover, .go-button:hover {
+            background-color: #1eb153;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>My eCommerce Site</h1>
-        <div class="cart">
-            <span>🛒 Cart (<span id="cart-count">0</span>)</span>
-        </div>
-    </header>
 
-    <main>
-        <div class="product" data-name="Product 1" data-price="10">
-            <h2>Product 1</h2>
-            <p>$10.00</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="product" data-name="Product 2" data-price="15">
-            <h2>Product 2</h2>
-            <p>$15.00</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="product" data-name="Product 3" data-price="20">
-            <h2>Product 3</h2>
-            <p>$20.00</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-    </main>
+<!-- Header -->
+<div class="header">
+    <div class="slogan">"Innovative Solutions"</div>
+    <h1>Solution<span>Hub</span></h1>
+    <div class="slogan">"Unmatched Service"</div>
+</div>
 
-    <footer>
-        <p>&copy; 2024 My eCommerce Site</p>
-    </footer>
+<!-- Navbar -->
+<div class="navbar">
+    <a href="#shop">SHOP</a>
+    <a href="#service">SERVICE</a>
+    <a href="#about">About us</a>
+    <a href="#contact">Contact us</a>
+    <a href="#download">DOWNLOAD</a>
+</div>
 
-    <script src="script.js"></script>
+<!-- Advertising Section -->
+<div class="advertising">
+    <div class="ad-images">
+        <img src="ad1.jpg" class="active" alt="Advertisement 1">
+        <img src="ad2.jpg" alt="Advertisement 2">
+        <img src="ad3.jpg" alt="Advertisement 3">
+    </div>
+</div>
+<!-- Filter and Search Section -->
+<div class="filters">
+    <select id="brandFilter">
+        <option value="">All Brands</option>
+        <option value="Lenovo">Lenovo</option>
+        <option value="Vivo">Vivo</option>
+        <option value="Dell">Dell</option>
+        <option value="HP">HP</option>
+    </select>
+    <select id="typeFilter">
+        <option value="">All Types</option>
+        <option value="Mobile Phone">Mobile Phone</option>
+        <option value="Computer">Computer</option>
+        <option value="Stationary">Stationary</option>
+    </select>
+
+    <select id="sortPrice">
+        <option value="">Sort by Price</option>
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+    </select>
+
+    <input type="search" id="searchInput" placeholder="Search products...">
+</div>
+
+<!-- Product Grid -->
+<div class="product-grid" id="productGrid">
+    <div class="product-item" onclick="openModal('Product 1', 'g2.jpg', '$NRS 33000', '12 GB ram DDR5 RAM + 512 GB SSD, N401 PROCESSOR')">
+        <img src="g2.jpg" alt="Product Image">
+        <h2>Product 1</h2>
+        <p>$199.99</p>
+    </div>
+    <div class="product-item" onclick="openModal('Product 1', 'M6502', '$NRS 33000', '12 GB ram DDR5 RAM + 512 GB SSD, N401 PROCESSOR')">
+        <img src="m6502nw.jpg" alt="Product Image">
+        <h2>Product 1</h2>
+        <p>$199.99</p>
+        <button class="order-button" onclick="placeOrder('Lenovo Computer', 600)">Place Order</button>
+    </div>
+    <div class="product-item" onclick="openModal('Product 1', 'g2.jpg', '$NRS 33000', '12 GB ram DDR5 RAM + 512 GB SSD, N401 PROCESSOR')">
+        <img src="GMKtec g2.jpg" alt="Product Image">
+        <h2>Product 1</h2>
+        <p>$199.99</p>
+    </div>
+    <div class="product-item" onclick="openModal('Product 1', 'g2020.jpg', '$NRS 33000', '12 GB ram DDR5 RAM + 512 GB SSD, N401 PROCESSOR')">
+        <img src="g2020.jpg" alt="Product Image">
+        <h2>Product 1</h2>
+        <p>$199.99</p>
+    </div>
+    <div class="product-item" onclick="openModal('Product 1', 'airbuds.jpg', '$NRS 33000', '12 GB ram DDR5 RAM + 512 GB SSD, N401 PROCESSOR')">
+        <img src="airpods.jpg" alt="Product Image">
+        <h2>airbuds</h2>
+        <p>$199.99</p>
+    </div>
+    <div class="product-item" onclick="openModal('Product 1', 'g2.jpg', '$NRS 33000', '12 GB ram DDR5 RAM + 512 GB SSD, N401 PROCESSOR')">
+        <img src="g2.jpg" alt="Product Image">
+        <h2>Product 1</h2>
+        <p>$199.99</p>
+    </div>
+    <!-- More product items here -->
+</div>
+
+<!-- Product Modal -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Product Image">
+        <h2 id="modalTitle"></h2>
+        <p id="modalPrice"></p>
+        <p id="modalDescription"></p>
+        <button class="close-modal" onclick="closeModal()">Close</button>
+    </div>
+   
+</div>
+
+<script>
+    // Image slider in advertising section
+    let currentAd = 0;
+    const ads = document.querySelectorAll('.ad-images img');
+    setInterval(() => {
+        ads[currentAd].classList.remove('active');
+        currentAd = (currentAd + 1) % ads.length;
+        ads[currentAd].classList.add('active');
+    }, 2000); // Change slide every 2 seconds
+
+    function openModal(title, imageSrc, price, description) {
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalImage").src = imageSrc;
+        document.getElementById("modalPrice").textContent = price;
+        document.getElementById("modalDescription").textContent = description;
+        document.getElementById("productModal").style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById("productModal").style.display = 'none';
+    }
+    function placeOrder(productName, price) {
+            const phoneNumber = "9779769726479";  // Replace with your WhatsApp number
+            const message = `Hello, I would like to order the product: ${productName} for $${price}.`;
+
+            // WhatsApp link with pre-filled message
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }    
+</script>
 </body>
 </html>
