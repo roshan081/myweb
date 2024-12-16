@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolutionHub</title>
+    <style>
+        /* Reset Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: black; color: #fff; overflow-x: hidden; }
+
+        /* Container */
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #000;
+            flex-wrap: nowrap;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            white-space: nowrap;
+        }
+        .header h1 span {
+            background-color: #ff9900;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Taglines with Animation */
+        .slogan {
+            font-size: 1rem;
+            animation: colorChange 1s infinite;
+            white-space: nowrap;
+            padding: 0 10px;
+        }
+        @keyframes colorChange {
+            0% { color: #ff9900; }
+            33% { color: #00ccff; }
+            66% { color: #28a745; }
+            100% { color: #ff9900; }
+        }
+
+        /* Navigation Menu */
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #011;
+            padding: 10px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            border-bottom: 2px solid white;
+            /* border-top: 2px solid white;
+            border-bottom: 2px solid white;
+            border-right: 2px solid white;
+            border-left: 2px solid white;*/
+        }
+        .navbar a {
+            flex-shrink: 0;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            border-top: 2px solid whitesmoke;
+            border-bottom: 2px solid white;
+            border-right: 2px solid ghostwhite;
+            border-left: 2px solid white;
+           
+        }
+        .navbar a:hover {
+            background-color: #ff9900;
+            color: #000;
+            border-radius: 5px;
+        }
+
+        /* Scrollbar Styling */
+        .navbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .navbar::-webkit-scrollbar-thumb {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Contact Information Section */
+        .contact-info {
+            margin-top: 2rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: ;
+            gap: 30px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: blue;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+        }
+        .contact-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        .contact-card a {
+            text-decoration: none;
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .contact-card a:hover {
+            color: #ff9900;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header { flex-direction: row; flex-wrap: nowrap; }
+            .header h1 { font-size: 1.8rem; }
+            .slogan { font-size: 0.9rem; }
+        }
+        @media (max-width: 480px) {
+            .header { flex-direction: row; }
+            .slogan { font-size: 0.8rem; }
+        }
+    .form-container {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        form input, form textarea {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header container">
+        <div class="slogan">"Innovative Solutions"</div>
+        <h1>Solution<span>Hub</span></h1>
+        <div class="slogan">"Unmatched Service"</div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="navbar" id ="navMenu">
+        <a href="index.html">SHOP</a>
+        <a href="service.html">SERVICES</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="contactus.html">CONTACT US</a>
+        <a href="download.html">DOWNLOAD</a>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="container contact-info">
+       
+        <!-- Phone Numbers -->
+       
+     <div class="contact-card">
+        
+            <div class="contact us">
+                <h1> Contact Us </h1>
+            </div>
+        </div>
+
+        <!-- Phone Numbers -->
+       
+     <div class="contact-card">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-phone-icon-download-in-svg-png-gif-file-formats--call-logo-ios-11-ios11-pack-user-interface-icons-461603.png?f=webp&w=256" alt="Phone">
+            <div>
+                <a href="tel:+9779769726479">+977 9769726479</a><br>
+                <a href="tel:+9779708658959">+977 9708658959</a><br>
+                <a href="tel:+9779801880379">+977 9801880379</a><br>
+                <a href="tel:+9779824010500">+977 9824010500</a>
+            </div>
+        </div>
+
+        <!-- WhatsApp -->
+
+        <div class="contact-card">
+            <img src="https://th.bing.com/th/id/R.3db05f40f9bfbfa4818e5f841359ac18?rik=i9uCGc2yoCWfNA&riu=http%3a%2f%2fspeedyclearance.uk%2fwp-content%2fuploads%2f2018%2f04%2fwhatsapp-icon.png&ehk=%2fGSNSk4y8vLd2qCiosXRI0WSYOth7SLdJewCXSxpcmY%3d&risl=&pid=ImgRaw&r=0">
+            <a href="https://wa.me/9779769726479" target="_blank">+977 9769726479</a>
+        </div>
+
+        <!-- Facebook -->
+        <div class="contact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" alt="Facebook">
+            <a href="https://www.facebook.com/harmrosolutionhub" target="_blank"> harmrosolutionhub</a>
+        </div>
+
+        <!-- TikTok -->
+        <div class="contact-card">
+            <img src="https://freepnglogo.com/images/all_img/1691751429tiktok-icon-png.png" alt="TikTok">
+            <a href="https://www.tiktok.com/@solutionhubnepal" target="_blank">solutionhubnepal</a>
+        </div>
+    </div>
+</div>
+
+    <!-- Contact Form Section -->
+    <section class="contact-container">
+        <div class="form-container">
+            <form id="contactForm">
+                <h2>Get in Touch</h2>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+     <!-- JavaScript for Auto Scroll -->
+    <script>
+        const navMenu = document.getElementById('navMenu');
+        let scrollAmount = 0;
+        const scrollStep = 2;
+        const scrollInterval = 100; // Every 3 seconds
+        let scrollDirection = 1;
+
+        function autoScrollMenu() {
+            if (scrollDirection === 1) {
+                scrollAmount += scrollStep;
+                if (scrollAmount >= navMenu.scrollWidth - navMenu.clientWidth) {
+                    scrollDirection = -1;
+                }
+            } else {
+                scrollAmount -= scrollStep;
+                if (scrollAmount <= 0) {
+                    scrollDirection = 1;
+                }
+            }
+            navMenu.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+        setInterval(autoScrollMenu, scrollInterval);
+    </script>
+    <!-- Footer Section -->
+<footer style="background-color: #000; color: #fff; padding: 20px 0; text-align: center;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <!-- Company Information -->
+    <div style="margin-bottom: 20px;">
+      <h3>SolutionHub</h3>
+      <p>Innovative Solutions |
+        Unmatched Services
+      </p>
+    </div>
+    
+    <!-- Social Links -->
+    <div style="margin-bottom: 20px;">
+      <a href="https://www.facebook.com/hamrosolutionhub" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px;">Facebook</a> |
+      <a href="https://www.tiktok.com/@solutionhubnepal" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px;">TikTok</a>
+    </div>
+    
+    <!-- Contact Info -->
+    <div style="margin-bottom: 20px;">
+      <p>Email: <a href="mailto:hamrosolutionhub@gmail.com" style="color: #fff; text-decoration: none;">hamrosolutionhub@gmail.com</a></p>
+      <p>Phone/WhatsApp: <a href="tel:+9779769726479" style="color: #fff; text-decoration: none;">+977 9769726479</a></p>
+    </div>
+    
+    <!-- Footer Links -->
+    <div>
+      <a href="#SHOP" style="color: #fff; text-decoration: none; margin: 0 15px;">Shop</a>
+      <a href="#SERVICE" style="color: #fff; text-decoration: none; margin: 0 15px;">Service</a>
+      <a href="#AboutUs" style="color: #fff; text-decoration: none; margin: 0 15px;">About Us</a>
+      <a href="#ContactUs" style="color: #fff; text-decoration: none; margin: 0 15px;">Contact Us</a>
+      <a href="#DOWNLOAD" style="color: #fff; text-decoration: none; margin: 0 15px;">Download</a>
+    </div>
+    
+    <!-- Copyright -->
+    <div style="margin-top: 20px;">
+      <p>&copy; 2024 SolutionHub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
